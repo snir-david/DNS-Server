@@ -13,16 +13,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16292af3-d6f9-43e9-ace9-3216033cbc81" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/introduction_to_networks.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+    <list default="true" id="16292af3-d6f9-43e9-ace9-3216033cbc81" name="Default Changelist" comment="adding client.py and server.py files">
+      <change afterPath="$PROJECT_DIR$/ips.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +51,7 @@
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
   <component name="RunManager" selected="Python.Client">
-    <configuration name="Client" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="Client" type="PythonConfigurationType" factoryName="Python" singleton="false">
       <module name="introduction_to_networks" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -77,7 +72,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Server" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="Server" type="PythonConfigurationType" factoryName="Python" singleton="false">
       <module name="introduction_to_networks" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -98,6 +93,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.Client" />
+      <item itemvalue="Python.Server" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -111,6 +110,13 @@
       <option name="presentableId" value="Default" />
       <updated>1604493008989</updated>
     </task>
+    <task id="LOCAL‎00001" summary="adding client.py and server.py files">
+      <created>1604852536991</created>
+      <option name="number" value="LOCAL‎00001" />
+      <option name="presentableId" value="LOCAL‎00001" />
+      <updated>1604852536991</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,15 +133,76 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="adding client.py and server.py files" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding client.py and server.py files" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604852097608">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605552529767">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1604852097608" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605552529767" />
+    <state x="421" y="45" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1605551343605">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="45" key="#com.intellij.ide.macro.MacrosDialog/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605551343605" />
+    <state x="484" y="231" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1605547711344">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="484" y="231" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605547711344" />
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1605553095372">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605553095372" />
+    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1605553095372">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605553095372" />
+    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1605553095372">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605553095372" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1605553095372">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605553095372" />
+    <state width="1259" height="204" key="GridCell.Tab.1.bottom" timestamp="1605552716695">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605552716695" />
+    <state width="1259" height="204" key="GridCell.Tab.1.center" timestamp="1605552716695">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="204" key="GridCell.Tab.1.center/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605552716695" />
+    <state width="1259" height="204" key="GridCell.Tab.1.left" timestamp="1605552716695">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="204" key="GridCell.Tab.1.left/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605552716695" />
+    <state width="1259" height="204" key="GridCell.Tab.1.right" timestamp="1605552716695">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="204" key="GridCell.Tab.1.right/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605552716695" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1604852122445">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1604852122445" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1604852542665">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1604852542665" />
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1605556270222">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680/1920.-284.1680.1010@0.0.1280.680" timestamp="1605556270222" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/client.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
