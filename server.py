@@ -1,3 +1,5 @@
+# Snir David Nahari 205686538
+
 import socket
 import time
 
@@ -14,6 +16,25 @@ def prepare_file(ips_file_lines):
             line_split.append('-1')
         line_array.append(line_split)
     return line_array
+
+
+def checking_ttl(ips_file_name, ips_file_array, ips_file_lines, current_time):
+    for index, line in enumerate(ips_file_array):
+        # if time stamp equal -1 - the address was here from the start. else, check TTL
+        if line[3] != '-1':
+            # if TTL smaller then current time - timestamp , than delete line from array and file
+            line_2_float = float(line[2])
+            line_3_float = float(line[3])
+            current_ttl = current_time - line_3_float
+            if line_2_float < current_ttl:
+                # deleting the line with the address from array and ips lines
+                ips_file_array.remove(line)
+                del ips_file_lines[index]
+                # writing to the file without the line
+                new_file = open(ips_file_name, "w")
+                for new_line in ips_file_lines:
+                    new_file.write(new_line)
+                new_file.close()
 
 
 # checking if the ips file has the address that the client asking for
@@ -48,31 +69,19 @@ def parent_server(socket_p, parent_ip, parent_port, data, line_array, current_ti
     data_string = ",".join(data_decode_split)
     line_array.append(data_string.split(','))
     # writes the new information in the file
-    ip_file_append = open(ips_file, "a")
-    ip_file_append.write("\n")
-    ip_file_append.write(data_string)
-    ip_file_append.close()
+    ips_file_append = open(ips_file, "a")
+    ips_file_append.write("\n")
+    ips_file_append.write(data_string)
+    ips_file_append.close()
     # sending the answer to the client
     socket_p.sendto(ip_back_from_server, addr)
-
-
-def checking_ttl(ips_file_array, ips_file_lines, current_time):
-    for index, line in enumerate(ips_file_array):
-        # if time stamp equal -1 - the address was here from the start. else, check TTL
-        if line[3] != '-1':
-            # if TTL smaller then current time - timestamp - forget line
-            line_2_float = float(line[2])
-            line_3_float = float(line[3])
-            current_ttl = current_time - line_3_float
-            if line_2_float < current_ttl:
-                ips_file_array.remove(line)
-                del ips_file_lines[index]
 
 
 def main(my_port, parent_ip, parent_port, ips_file_name):
     # open ips file, read lines and convert to array by using prepare_file function
     ips_file = open(ips_file_name, "r")
     ips_file_lines = ips_file.readlines()
+    ips_file.close()
     ips_file_array = prepare_file(ips_file_lines)
     # open a socket for communication
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -81,7 +90,7 @@ def main(my_port, parent_ip, parent_port, ips_file_name):
         # time stamp for using later
         current_time = time.time()
         # checking TTL
-        checking_ttl(ips_file_array, ips_file_lines, current_time)
+        checking_ttl(ips_file_name, ips_file_array, ips_file_lines, current_time)
         # getting a request from client and decoding it from byte to string
         data, addr = s.recvfrom(1024)
         address = data.decode()
