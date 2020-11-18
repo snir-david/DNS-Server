@@ -19,7 +19,14 @@ def prepare_file(ips_file_lines):
 
 
 def checking_ttl(ips_file_name, ips_file_array, ips_file_lines, current_time):
+    old_len = len(ips_file_array)
     for index, line in enumerate(ips_file_array):
+        # checking line index is in bound
+        if len(line) < 4:
+            # deleting the line with the address from array and ips lines
+            ips_file_array.remove(line)
+            del ips_file_lines[index]
+            continue
         # if time stamp equal -1 - the address was here from the start. else, check TTL
         if line[3] != '-1':
             # if TTL smaller then current time - timestamp , than delete line from array and file
@@ -28,13 +35,14 @@ def checking_ttl(ips_file_name, ips_file_array, ips_file_lines, current_time):
             current_ttl = current_time - line_3_float
             if line_2_float < current_ttl:
                 # deleting the line with the address from array and ips lines
-                ips_file_array.remove(line)
                 del ips_file_lines[index]
-                # writing to the file without the line
-                new_file = open(ips_file_name, "w")
-                for new_line in ips_file_lines:
-                    new_file.write(new_line)
-                new_file.close()
+                ips_file_array.remove(line)
+    if old_len > len(ips_file_array):
+        # writing to the file without the line
+        new_file = open(ips_file_name, "w")
+        for new_line in ips_file_lines:
+            new_file.write(new_line)
+        new_file.close()
 
 
 # checking if the ips file has the address that the client asking for
@@ -55,7 +63,7 @@ def send_to_client(socket_c, line, address):
 
 
 # if we haven't found the address - sending request to parent server
-def parent_server(socket_p, parent_ip, parent_port, data, line_array, current_time, ips_file):
+def parent_server(socket_p, client_address, parent_ip, parent_port, data, line_array, current_time, ips_file):
     # sending request for parent server
     socket_p.sendto(data, (parent_ip, int(parent_port)))
     ip_back_from_server, addr = socket_p.recvfrom(1024)
@@ -68,13 +76,21 @@ def parent_server(socket_p, parent_ip, parent_port, data, line_array, current_ti
     data_decode_split[3] = time_string
     data_string = ",".join(data_decode_split)
     line_array.append(data_string.split(','))
+    # reads the current information in the file
+    ips_file_read = open(ips_file, "r")
+    # checking if last line contain "\n" (new line) or not
+    ips_last_line = ips_file_read.readlines()
+    ips_file_read.close()
     # writes the new information in the file
     ips_file_append = open(ips_file, "a")
-    ips_file_append.write("\n")
+    # if last line doesn't contain new line, adding new line and than adding the ip line
+    if ips_last_line[len(ips_last_line) - 1].find("\n") == -1:
+        ips_file_append.write("\n")
     ips_file_append.write(data_string)
     ips_file_append.close()
+
     # sending the answer to the client
-    socket_p.sendto(ip_back_from_server, addr)
+    socket_p.sendto(ip_back_from_server, client_address)
 
 
 def main(my_port, parent_ip, parent_port, ips_file_name):
@@ -101,7 +117,7 @@ def main(my_port, parent_ip, parent_port, ips_file_name):
             send_to_client(s, line, addr)
         # else, send a request to parent server
         else:
-            parent_server(s, parent_ip, parent_port, data, ips_file_array, current_time, ips_file_name)
+            parent_server(s, addr, parent_ip, parent_port, data, ips_file_array, current_time, ips_file_name)
 
 
 if __name__ == "__main__":
